@@ -13,9 +13,9 @@ const TermsAndConditions: React.FC = () => {
 
       <h2 className="text-2xl font-semibold mt-8 mb-4 text-indigo-600 ">1. Definitions</h2>
       <ul className="list-disc list-inside mb-4 text-indigo-600 dark:text-white">
-        <li><strong>"User"</strong>: Any individual or entity that accesses and uses the P-Show platform.</li>
-        <li><strong>"Content"</strong>: Any projects, descriptions, images, videos, comments, or other materials uploaded by users to the platform.</li>
-        <li><strong>"Platform"</strong>: The P-Show website and services provided through it.</li>
+        <li><strong>User</strong>: Any individual or entity that accesses and uses the P-Show platform.</li>
+        <li><strong>Content</strong>: Any projects, descriptions, images, videos, comments, or other materials uploaded by users to the platform.</li>
+        <li><strong>Platform</strong>: The P-Show website and services provided through it.</li>
       </ul>
 
       <h2 className="text-2xl font-semibold mt-8 mb-4 text-indigo-600 ">2. User Accounts</h2>
