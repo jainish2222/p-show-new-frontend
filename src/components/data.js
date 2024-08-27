@@ -9,38 +9,39 @@ import {
 
 import benefitOneImg from "../../public/img/benefit-one.png";
 import benefitTwoImg from "../../public/img/benefit-two.png";
+import bluecartoon from "../../public/img/avtar.png";
 
 const benefitOne = {
-  title: "Highlight your benefits",
-  desc: "You can use this space to highlight your first benefit or a feature of your product. It can also contain an image or Illustration like in the example along with some bullet points.",
+  title: "Highlight your Works",
+  desc: "P-show fosters a strong sense of connectivity among students by creating a vibrant community where ideas and innovations are freely exchanged. Through this platform,.",
   image: benefitOneImg,
   bullets: [
     {
-      title: "Understand your customers",
-      desc: "Then explain the first point breifly in one or two lines.",
+      title: "Showcase Your Work",
+      desc: "Gain visibility by displaying your projects to a global audience.",
       icon: <FaceSmileIcon />,
     },
     {
-      title: "Improve acquisition",
-      desc: "Here you can add the next benefit point.",
+      title: "Boost Opportunities",
+      desc: "Attract attention from potential mentors, students, and collaborators.",
       icon: <ChartBarSquareIcon />,
     },
     {
-      title: "Drive customer retention",
-      desc: "This will be your last bullet point in this section.",
+      title: "Connect with Peers",
+      desc: "Collaborate and exchange feedback with like-minded students.",
       icon: <CursorArrowRaysIcon />,
     },
   ],
 };
 
 const benefitTwo = {
-  title: "Offer more benefits here",
-  desc: "You can use this same layout with a flip image to highlight your rest of the benefits of your product. It can also contain an image or Illustration as above section along with some bullet points.",
+  title: "We offer several additional benefits.",
+  desc: "Effortless to upload, use, and showcase projects while connecting with others seamlessly. Discover, collaborate, and inspire within a vibrant community of creators.",
   image: benefitTwoImg,
   bullets: [
     {
-      title: "Mobile Responsive Template",
-      desc: "Nextly is designed as a mobile first responsive template.",
+      title: "Mobile Responsive ",
+      desc: "P-Show is designed as a mobile first responsive .",
       icon: <DevicePhoneMobileIcon />,
     },
     {
@@ -56,5 +57,9 @@ const benefitTwo = {
   ],
 };
 
+const benefitThree = {
+   image: bluecartoon
+};
 
-export {benefitOne, benefitTwo};
+
+export {benefitOne, benefitTwo,benefitThree};

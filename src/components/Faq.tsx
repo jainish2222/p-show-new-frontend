@@ -36,21 +36,21 @@ export const Faq = () => {
 
 const faqdata = [
   {
-    question: "Is this template completely free to use?",
-    answer: "Yes, this template is completely free to use.",
+    question: "is it entirely free to access and use?",
+    answer: "Yes, the platform is entirely free to access and use for showcasing projects.",
   },
   {
     question: "Can I use it in a commercial project?",
     answer: "Yes, this you can.",
   },
   {
-    question: "What is your refund policy? ",
+    question: "Are your users global or region-specific?",
     answer:
-      "If you're unhappy with your purchase for any reason, email us within 90 days and we'll refund you in full, no questions asked.",
+      "No, currently the platform is only for students from Surat colleges.",
   },
   {
     question: "Do you offer technical support? ",
     answer:
-      "No, we don't offer technical support for free downloads. Please purchase a support plan to get 6 months of support.",
+      "No, we don't offer technical support for free downloads. but you can email on jainishkoladiya33@gmail.com for any qaustion regarding this platform",
   },
 ];
