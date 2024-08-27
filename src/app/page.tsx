@@ -35,7 +35,7 @@ export default function Home() {
        they gain fresh perspectives, spark creativity, and form meaningful relationships.
       </SectionTitle>
 
-      <Video videoId="AA4tpFxfcxI?si=bc9ookjL71rnicfq" />
+      <Video videoId="52WkpKsIQFo?si=wTlR4uuURQcojoGQ" />
 
       <SectionTitle
         preTitle="Projects"
