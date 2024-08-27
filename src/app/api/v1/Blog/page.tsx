@@ -7,7 +7,7 @@ export default function Home() {
       <div className="text-center p-5 max-w-xl mx-auto">
       <h1 className="text-4xl font-bold text-indigo-600 mb-4">Blog are Coming Soon</h1>
         <p className="text-lg mb-4 dark:text-white">
-          We're working hard to bring something amazing to you! Stay tuned for updates.
+          We re working hard to bring something amazing to you! Stay tuned for updates.
         </p>
         <p className="text-lg text-indigo-600">
           <strong>P-Show</strong>

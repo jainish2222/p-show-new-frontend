@@ -61,31 +61,31 @@ function Sidebar() {
               <div id="scrollspy-2" className="space-y-4">
                 <div id="item-1">
                   <h3 className="text-lg font-semibold dark:text-white">Item 1</h3>
-                  <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-neutral-400">This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+                  <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-neutral-400">This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
                 </div>
                 <div id="item-1-1">
                   <h3 className="text-lg font-semibold dark:text-white">Item 1-1</h3>
-                  <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-neutral-400">This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+                  <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-neutral-400">This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
                 </div>
                 <div id="item-1-2">
                   <h3 className="text-lg font-semibold dark:text-white">Item 1-2</h3>
-                  <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-neutral-400">This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+                  <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-neutral-400">This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
                 </div>
                 <div id="item-2">
                   <h3 className="text-lg font-semibold dark:text-white">Item 2</h3>
-                  <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-neutral-400">This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+                  <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-neutral-400">This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
                 </div>
                 <div id="item-3">
                   <h3 className="text-lg font-semibold dark:text-white">Item 3</h3>
-                  <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-neutral-400">This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+                  <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-neutral-400">This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
                 </div>
                 <div id="item-3-1">
                   <h3 className="text-lg font-semibold dark:text-white">Item 3-1</h3>
-                  <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-neutral-400">This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+                  <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-neutral-400">This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
                 </div>
                 <div id="item-3-2">
                   <h3 className="text-lg font-semibold dark:text-white">Item 3-2</h3>
-                  <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-neutral-400">This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+                  <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-neutral-400">This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
                 </div>
               </div>
             </div>

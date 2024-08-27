@@ -68,7 +68,7 @@ function App() {
                 Cerebro
             </h2>
             <p className="text-1.5xl text-grey sm:text-base leading-160">
-                A platform for hosting data hackathons exclusively in IITR. It's challenges and competitions are maintained by members of SDSLabs and Data Science Group.
+                A platform for hosting data hackathons exclusively in IITR. It s challenges and competitions are maintained by members of SDSLabs and Data Science Group.
             </p>
             <div  className="text-sm pt-16">
               <a  href="https://cerebro.sdslabs.co" rel="noreferrer noopener" target="_blank" className="no-underline flex flex-row max-w-[200px] bg-black inline-block font-bold text-1.5xl sm:text-base text-white leading-none px-14 py-10 sm:py-5 border-solid border-black border-1">
