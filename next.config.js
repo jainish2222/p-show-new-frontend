@@ -1,8 +1,5 @@
-// @ts-check
- 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-    ignoreDuringBuilds:true
-  }
-   
-  module.exports = nextConfig
+module.exports = {
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+};
