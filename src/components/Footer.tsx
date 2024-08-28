@@ -54,7 +54,7 @@ export function Footer() {
               {navigation.map((item, index) => (
                 <Link
                   key={index}
-                  href={`http://localhost:3000/api/v1/${item}`}
+                  href={`https://p-show-fhuf.vercel.app/api/v1/${item}`}
                   className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-trueGray-700"
                 >
                   {item}
@@ -67,7 +67,7 @@ export function Footer() {
               {legal.map((item, index) => (
                 <Link
                   key={index}
-                  href={`http://localhost:3000/etc/${item}`}
+                  href={`https://p-show-fhuf.vercel.app/etc/${item}`}
                   className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-trueGray-700"
                 >
                   {item}
@@ -112,7 +112,7 @@ export function Footer() {
 
         <div className="my-10 text-sm text-center text-gray-600 dark:text-gray-400">
           Copyright © {new Date().getFullYear()}. Made with ♥ by{" "}
-          <a href="http://localhost:3000/" target="_blank" rel="noopener">
+          <a href="https://p-show-fhuf.vercel.app/" target="_blank" rel="noopener">
             P-show.
           </a>{" "}
         </div>
