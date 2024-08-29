@@ -75,7 +75,7 @@ export function Footer() {
               ))}
             </div>
           </div>
-          <div className="">
+          {/* <div className="">
             <div>Follow us</div>
             <div className="flex mt-5 space-x-5 text-gray-400 dark:text-gray-500">
               <a
@@ -107,7 +107,7 @@ export function Footer() {
                 <Linkedin />
               </a>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className="my-10 text-sm text-center text-gray-600 dark:text-gray-400">
