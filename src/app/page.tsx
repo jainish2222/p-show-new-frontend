@@ -6,8 +6,8 @@ import { Video } from "@/components/Video";
 import { Testimonials } from "@/components/Testimonials";
 import { Faq } from "@/components/Faq";
 import { Cta } from "@/components/Cta";
-import {Sidebar } from "@/components/Sidebar"
-
+import {Sidebar } from "@/components/Sidebar";
+import { Appbar } from "@/components/Appbar";
 
 
 import { benefitOne, benefitTwo } from "@/components/data";
@@ -40,9 +40,7 @@ export default function Home() {
       <SectionTitle
         preTitle="Projects"
         title="Discover the Creativity Behind Our Students' Projects on P-show!">
-        <div>
-        {/* <Sidebar/> */}
-        </div>
+        
       </SectionTitle>
     </Container>
   );

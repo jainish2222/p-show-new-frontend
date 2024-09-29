@@ -69,3 +69,22 @@
     transform: rotate(360deg);
   }
 }
+
+/* Add this to your global CSS file or a module CSS file */
+@keyframes textGlow {
+  0% { color: #FF0000; } /* Red */
+  14% { color: #FF7F00; } /* Orange */
+  28% { color: #FFFF00; } /* Yellow */
+  42% { color: #00FF00; } /* Green */
+  57% { color: #0000FF; } /* Blue */
+  71% { color: #4B0082; } /* Indigo */
+  85% { color: #8B00FF; } /* Violet */
+  100% { color: #FF0000; } /* Red */
+}
+
+.animate-glow {
+  animation: textGlow 2s infinite;
+}
+.popover {
+  display: none;
+}

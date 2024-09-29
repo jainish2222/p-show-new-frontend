@@ -75,39 +75,7 @@ export function Footer() {
               ))}
             </div>
           </div>
-          {/* <div className="">
-            <div>Follow us</div>
-            <div className="flex mt-5 space-x-5 text-gray-400 dark:text-gray-500">
-              <a
-                href="https://x.com/Jainish01082004?t=riJ05r8BPPHeR3XLrARLhQ&s=09"
-                target="_blank"
-                rel="noopener"
-              >
-                <span className="sr-only">Twitter</span>
-                <Twitter />
-              </a>
-              <a
-                href="https://www.facebook.com/share/WqFr6F9AC81U6F2i/?mibextid=qi2Omg"
-                target="_blank"
-                rel="noopener"
-              >
-                <span className="sr-only">Facebook</span>
-                <Facebook />
-              </a>
-              <a
-                href="https://www.instagram.com/jainish_koladiya_?igsh=bjNjdm96YjJzaTk2"
-                target="_blank"
-                rel="noopener"
-              >
-                <span className="sr-only">Instagram</span>
-                <Instagram />
-              </a>
-              <a href="https://www.linkedin.com/in/jainish-koladiya?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener">
-                <span className="sr-only">Linkedin</span>
-                <Linkedin />
-              </a>
-            </div>
-          </div> */}
+   */}
         </div>
 
         <div className="my-10 text-sm text-center text-gray-600 dark:text-gray-400">

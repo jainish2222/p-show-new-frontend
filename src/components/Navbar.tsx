@@ -3,16 +3,18 @@ import Link from "next/link";
 import ThemeChanger from "./DarkSwitch";
 import Image from "next/image"
 import { Disclosure } from "@headlessui/react";
+import { signOut, useSession } from "next-auth/react";
 
 export const Navbar = () => {
   const navigation = [
     "Projects",
     "News",
-    "Blog",
+    "ShareFile",
+    "form",
     "Aboutus",
     "Contact",
   ];
-
+  const { data: session }: any = useSession();
   return (
     <div className="w-full">
       <nav className="container relative flex flex-wrap items-center justify-between p-8 mx-auto lg:justify-between xl:px-0">
@@ -67,9 +69,6 @@ export const Navbar = () => {
                           {item}
                       </Link>
                     ))}
-                    <Link href="/api/v1/form" className="w-full px-6 py-2 mt-3 text-center text-white bg-indigo-600 rounded-md lg:ml-5">         
-                    Upload Your Project
-                    </Link>
                   </>
                 </Disclosure.Panel>
               </div>
@@ -89,14 +88,58 @@ export const Navbar = () => {
             ))}
           </ul>
         </div>
-
-        <div className="hidden mr-3 space-x-4 lg:flex nav__item">
-          <Link href="/api/v1/form" className="px-6 py-2 text-white bg-indigo-600 rounded-md md:ml-5">
-             Upload Your Project
+        {/* <div className="hidden mr-3 space-x-4 lg:flex nav__item">
+        <Link href="/login" className="px-6 py-2 text-white bg-indigo-600 rounded-md md:ml-5">
+             Login
+          </Link>
+          <>
+              {session.user?.email}
+              <li>
+                <button
+                  onClick={() => {
+                    signOut();
+                  }}
+                  className="p-2 px-5 -mt-1 bg-blue-800 rounded-full"
+                >
+                  Logout
+                </button>
+              </li>
+            </>
+          <Link href="/register" className="px-6 py-2 text-white bg-indigo-600 rounded-md md:ml-5">
+             Register
           </Link>
 
           <ThemeChanger />
-        </div>
+        </div> */}
+        <div className="hidden mr-3 space-x-4 lg:flex nav__item">
+        {!session ? (
+            <>
+              <Link href="/login" className="px-6 py-2 text-white bg-indigo-600 rounded-md md:ml-5">
+                Login
+              </Link>
+              <Link href="/register" className="px-6 py-2 text-white bg-indigo-600 rounded-md md:ml-5">
+                Register
+              </Link>
+              <ThemeChanger />
+            </>
+          ) : (
+            <>
+      <p className="text-indigo-600 text-lg mt-1 mr-3 animate-glow">
+  @{session.user?.email.split('@')[0]}
+</p>
+
+      <div className="flex space-x-4">
+        <button 
+          onClick={() => signOut()}
+          className="bg-indigo-800 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+        >
+          Logout
+        </button>
+        <ThemeChanger />
+      </div>
+    </>
+          )}
+        </div> 
       </nav>
     </div>
   );
