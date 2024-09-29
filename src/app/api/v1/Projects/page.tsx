@@ -2,7 +2,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import {SectionTitle} from '@/components/SectionTitle' ;
-import Image from 'next/image';
 function App() {
   const [activeSection, setActiveSection] = useState("");
   const [formData, setFormData] = useState([]);
@@ -130,7 +129,7 @@ function App() {
                   </div>
                   <div className="flex sm:pl-1 sm:w-7/10">
                     <div className="image self-center flex flex-row z-10  w-[400px] h-[250px]">
-                      <Image
+                      <img
                         src={item.img}
                         className="object-contain z-20"
                         alt={item.projectName}
