@@ -1,8 +1,12 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
+<<<<<<< HEAD
 // import { SectionTitle } from '@/components/SectionTitle'; 
 
+=======
+import {SectionTitle} from '@/components/SectionTitle' ;
+>>>>>>> 9abcf62fe07c6555b6da3e26674a0f31974e9497
 function App() {
   const [activeSection, setActiveSection] = useState("");
   const [formData, setFormData] = useState([]);
@@ -134,6 +138,7 @@ function App() {
                         </a>     
                       </div>
                     </div>
+<<<<<<< HEAD
                     <div className="flex sm:pl-1 sm:w-7/10">
                       <div className="image self-center flex flex-row z-10 w-[400px] h-[250px]">
                         <img
@@ -143,6 +148,17 @@ function App() {
                         />
                         <div className="hidden sm:block w-100 h-148 self-end"></div>
                       </div>
+=======
+                  </div>
+                  <div className="flex sm:pl-1 sm:w-7/10">
+                    <div className="image self-center flex flex-row z-10  w-[400px] h-[250px]">
+                      <img
+                        src={item.img}
+                        className="object-contain z-20"
+                        alt={item.projectName}
+                      />
+                      <div className="hidden sm:block w-100 h-148 self-end"></div>
+>>>>>>> 9abcf62fe07c6555b6da3e26674a0f31974e9497
                     </div>
                   </div>
                 </div>
