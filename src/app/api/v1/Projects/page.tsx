@@ -73,16 +73,9 @@ function App() {
     </div>
   );
   
-  if (error) return <div>{error}</div>;
+  if (error) return <div>{error}</div>
 
   return (
-    <>
-      {/* Uncomment SectionTitle if you want to use it */}
-      {/* <SectionTitle
-        preTitle="Projects"
-        title="Discover the Creativity Behind Our Students' Projects on P-show!"
-      /> */}
-      
       <div className="flex flex-row justify-center items-center">
         <main>
           <div>
@@ -162,7 +155,6 @@ function App() {
           </div>
         </main>
       </div>
-    </>
   );
 }
 
