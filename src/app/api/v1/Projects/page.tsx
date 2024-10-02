@@ -1,12 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-<<<<<<< HEAD
-// import { SectionTitle } from '@/components/SectionTitle'; 
-
-=======
 import {SectionTitle} from '@/components/SectionTitle' ;
->>>>>>> 9abcf62fe07c6555b6da3e26674a0f31974e9497
 function App() {
   const [activeSection, setActiveSection] = useState("");
   const [formData, setFormData] = useState([]);
