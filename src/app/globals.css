@@ -88,3 +88,16 @@
 .popover {
   display: none;
 }
+/* Add this in your global CSS file if you want a custom scrollbar style */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(229, 1, 249, 0.5);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(63, 81, 181)
+}

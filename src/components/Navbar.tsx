@@ -8,7 +8,7 @@ import { signOut, useSession } from "next-auth/react";
 export const Navbar = () => {
   const navigation = [
     "Projects",
-    "News",
+    "Videocall",
     "ShareFile",
     "form",
     "Aboutus",
