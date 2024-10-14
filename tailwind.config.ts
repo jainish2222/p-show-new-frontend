@@ -15,6 +15,8 @@ const config: Config = {
     extend: {
       colors: {
         trueGray: colors.neutral,
+        lightBlue: '#A0D9FF',
+        grayHover: '#555555',
       },
       animation: {
         'infinite-scroll': 'infinite-scroll 25s linear infinite',

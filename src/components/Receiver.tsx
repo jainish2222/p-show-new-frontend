@@ -97,11 +97,11 @@ const Receiver = () => {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md flex flex-col items-center">
-  <h2 className="text-2xl font-semibold mb-4 text-blue-700 dark:text-blue-300">File Receiver</h2>
+    <div className=" p-6 rounded-lg shadow-md flex flex-col items-center " style={{ boxShadow: '0px 0px 10px rgba(67, 56, 202, 0.7)' }}>
+  <h2 className="text-2xl font-semibold mb-4 text-indigo-600">File Receiver</h2>
 
   <div className="mb-6 w-full">
-    <label htmlFor="roomId" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+    <label htmlFor="roomId" className="block mb-2 text-sm font-medium">
       Enter Room ID
     </label>
     <input
@@ -110,27 +110,27 @@ const Receiver = () => {
       placeholder="Enter Room ID"
       value={roomId}
       onChange={(e) => setRoomId(e.target.value)}
-      className="bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      className=" border border-gray-300 dark:border-gray-600  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
     />
   </div>
 
   <button
     onClick={handleRoomJoin}
-    className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-200"
+    className="px-4 py-2  rounded bg-indigo-500 hover:bg-blue-600 transition duration-200"
   >
     Connect
   </button>
 
   {isReceiving && (
     <div className="mt-4 w-full">
-      <div className="bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+      <div className="rounded-full h-2">
         <div
-          className="bg-blue-500 h-2 rounded-full"
+          className=" h-2 rounded-full"
           style={{ width: `${downloadProgress}%` }}
         />
       </div>
-      <div className="text-center mt-1 text-gray-900 dark:text-gray-200">{downloadProgress}%</div>
-      <div className="text-center mt-1 text-gray-900 dark:text-gray-200">
+      <div className="text-center mt-1 ">{downloadProgress}%</div>
+      <div className="text-center mt-1 ">
         Receiving: <span className="font-bold">{receivedFileName}</span>
       </div>
     </div>
@@ -143,7 +143,7 @@ const Receiver = () => {
       </p>
       <button
         onClick={handleDownload}
-        className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition duration-200"
+        className="px-4 py-2 bg-green-500 rounded hover:bg-green-600 transition duration-200"
       >
         Download File
       </button>

@@ -71,16 +71,16 @@ const Sender = () => {
   }, []);
 
   return (
-<div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md flex flex-col items-center">
-  <h2 className="text-2xl font-semibold mb-4 text-blue-700 dark:text-blue-300">File Sender</h2>
+<div className="p-6 rounded-lg shadow-md flex flex-col items-center " style={{ boxShadow: '0px 0px 10px rgba(67, 56, 202, 0.7)' }}>
+  <h2 className="text-2xl font-semibold text-indigo-600 mb-4">File Sender</h2>
   <button
     onClick={createRoom}
-    className="mb-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-200"
+    className="mb-4 px-4 py-2  rounded bg-indigo-500 hover:bg-blue-600 transition duration-200"
   >
     Create Room
   </button>
-  <div className="mb-4 text-lg text-gray-800 dark:text-gray-200">
-    Room ID: <span className="font-bold text-blue-500 dark:text-blue-300">{roomId}</span>
+  <div className="mb-4 text-lg text-gray-800 dark:text-gray-200 ">
+    Room ID: <span className="font-bold dark:text-cyan-300 text-cyan-800">{roomId}</span>
   </div>
 
   <input
@@ -91,14 +91,14 @@ const Sender = () => {
   {selectedFile && (
     <button
       onClick={shareFile}
-      className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition duration-200"
+      className="px-4 py-2 bg-green-500  rounded hover:bg-green-600 transition duration-200"
     >
       Share File
     </button>
   )}
 
-  <div className="mt-4 text-lg text-gray-800 dark:text-gray-200">
-    Progress: <span className="font-bold text-blue-500 dark:text-blue-300">{progress}%</span>
+  <div className="mt-4 text-lg ">
+    Progress: <span className="font-bold ">{progress}%</span>
   </div>
 </div>
 

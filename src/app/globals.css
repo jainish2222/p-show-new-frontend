@@ -101,3 +101,14 @@
 ::-webkit-scrollbar-thumb:hover {
   background-color: rgb(63, 81, 181)
 }
+.project-image-container {
+  height: 35vh; /* Height for desktop */
+  width: 25vw;  /* Width for desktop */
+}
+
+@media (max-width: 768px) { /* Adjust breakpoint as necessary */
+  .project-image-container {
+    height: auto; /* Height adjusts automatically on mobile */
+    width: 100%;  /* Full width on mobile */
+  }
+}

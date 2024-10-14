@@ -6,9 +6,9 @@ import Receiver from "@/components/Receiver";
 
 function App() {
   return (
-<div className="flex flex-col items-center justify-center min-h-screen bg-white dark:bg-gray-800">
-  <h1 className="text-4xl font-bold text-center text-blue-700 dark:text-blue-300 mb-6">Share-Karo</h1>
-  <div className="flex flex-wrap justify-center w-full max-w-4xl p-6 shadow-md rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700">
+<div className="flex flex-col items-center justify-center min-h-screen">
+  <h1 className="text-4xl font-bold text-center text-indigo-600  mb-7">Share-Karo</h1>
+  <div className="flex flex-wrap justify-center w-full max-w-4xl p-6 shadow-md rounded-lg border  border-indigo-600 ">
     <div className="w-full md:w-1/2 p-4">
       <Sender />
     </div>
