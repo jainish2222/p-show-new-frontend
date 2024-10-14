@@ -1,4 +1,3 @@
-
 "use client";
 import React, { useState } from "react";
 import { SectionTitle } from "@/components/SectionTitle";
@@ -23,6 +22,7 @@ function MyForm() {
   const [file, setFile] = useState(null);
   const [img, setImg] = useState("");
   const [agreeTerms, setAgreeTerms] = useState(false);
+  const [loading, setLoading] = useState(false); // Loading state
 
   const { data: session, status } = useSession();
 
@@ -34,10 +34,12 @@ function MyForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true); // Set loading state
 
     try {
       if (!file) {
         toast.error("Please upload an image");
+        setLoading(false); // Reset loading state
         return;
       }
 
@@ -52,41 +54,47 @@ function MyForm() {
         formData
       );
 
-      const imgUrl = response.data.secure_url;
-      setImg(imgUrl);
+      if (response.data.secure_url) {
+        const imgUrl = response.data.secure_url;
+        setImg(imgUrl);
 
-      // Now submit form data to your backend
-      const res = await fetch("https://project-server-1-xkfw.onrender.com/submit-form", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          name,
-          surname,
-          college,
-          branch,
-          graduationStart,
-          graduationEnd,
-          projectName,
-          projectDescription,
-          githubLink,
-          liveLink,
-          img: imgUrl,
-          agreeTerms,
-        }),
-      });
+        // Submit form data to your backend
+        const res = await fetch("https://project-server-1-xkfw.onrender.com/submit-form", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            name,
+            surname,
+            college,
+            branch,
+            graduationStart,
+            graduationEnd,
+            projectName,
+            projectDescription,
+            githubLink,
+            liveLink,
+            img: imgUrl,
+            agreeTerms,
+          }),
+        });
 
-      const result = await res.json();
-      if (res.ok) {
-        toast.success("Form submitted successfully!");
+        if (res.ok) {
+          setLoading(true)
+        } else {
+          setLoading(false)
+        }
       } else {
-        toast.error("Failed to submit form.");
+        toast.error("Image upload failed.");
       }
     } catch (error) {
-      console.error("Error:", error);
+      alert("Error:", error);
       toast.error("An error occurred during form submission.");
+    } finally {
+      setLoading(false); 
+      // Reset loading state
     }
   };
 
@@ -152,7 +160,7 @@ function MyForm() {
         type="email"
         id="email"
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        placeholder="name@flowbite.com"
+        placeholder="email id must be diffrent for each project"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
@@ -217,7 +225,7 @@ function MyForm() {
           <input
             id="datepicker-range-start"
             name="start"
-            type="text"
+            type="month"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Select date start"
             value={graduationStart}
@@ -229,7 +237,7 @@ function MyForm() {
           <input
             id="datepicker-range-end"
             name="end"
-            type="text"
+            type="month"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Select date end"
             value={graduationEnd}
@@ -302,12 +310,15 @@ function MyForm() {
       <label htmlFor="agreeTerms" className="ml-2 text-sm font-medium text-gray-900 dark:text-white">I agree to the terms and conditions</label>
     </div>
 
-    <button 
-      type="submit"
-      className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-    >
-      Submit
-    </button>
+    <button
+        type="submit"
+        className={`w-full bg-indigo-600 text-white rounded-lg py-2.5 ${
+          loading ? "opacity-50 cursor-not-allowed" : ""
+        }`}
+        disabled={loading}
+      >
+         {loading ? "Submitting..." : "Submit"}
+      </button>
   </form>
   );
 }

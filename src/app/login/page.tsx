@@ -98,12 +98,6 @@ const Login = () => {
             </button>
             {error && <p className="text-red-600 text-sm">{error}</p>}
           </form>
-          <button
-            className="w-full mt-4 bg-black  text-white py-2 rounded hover:bg-gray-800"
-            onClick={() => signIn("github")}
-          >
-            Sign In with GitHub
-          </button>
           <div className="text-center text-gray-500 mt-4">- OR -</div>
           <Link href="/register" className="block text-center text-blue-500 hover:underline mt-2">
             Register Here
