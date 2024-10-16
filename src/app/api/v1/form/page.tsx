@@ -59,7 +59,7 @@ function MyForm() {
         setImg(imgUrl);
 
         // Submit form data to your backend
-        const res = await fetch("https://project-server-1-xkfw.onrender.com/submit-form", {
+        const res = await fetch("https://share-server-pshow.onrender.com/submit-form", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -83,14 +83,16 @@ function MyForm() {
 
         if (res.ok) {
           setLoading(true)
+          alert("Your project has been uploaded successfully");
         } else {
+          alert("You cannot upload the project with the same email ID. Please use a different email ID to proceed.");
           setLoading(false)
         }
       } else {
-        toast.error("Image upload failed.");
+        alert("Your project image was not uploaded to our database. Please re-upload the entire project to proceed.");
       }
     } catch (error) {
-      alert("Error:", error);
+      alert("We are sorry for the inconvenience caused on our side. We are aware of the issue and are fixing it very soon.");
       toast.error("An error occurred during form submission.");
     } finally {
       setLoading(false); 
@@ -142,6 +144,7 @@ function MyForm() {
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         value={name}
         onChange={(e) => setName(e.target.value)}
+        required
       />
     </div>
     <div className="mb-5">
@@ -152,6 +155,7 @@ function MyForm() {
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         value={surname}
         onChange={(e) => setSurname(e.target.value)}
+        required
       />
     </div>
     <div className="mb-5">
@@ -173,6 +177,7 @@ function MyForm() {
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         value={college}
         onChange={(e) => setCollege(e.target.value)}
+        required
       >
         <option>C.K. Pithawalla College of Engineering and Technology</option>
         <option>Sarvajanik College of Engineering & Technology (SCET)</option>
@@ -193,6 +198,7 @@ function MyForm() {
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         value={branch}
         onChange={(e) => setBranch(e.target.value)}
+        required
       >
         <option>Computer Engineering</option>
         <option>Information Technology</option>
@@ -230,6 +236,7 @@ function MyForm() {
             placeholder="Select date start"
             value={graduationStart}
             onChange={(e) => setGraduationStart(e.target.value)}
+            required
           />
         </div>
         <span className="mx-4 text-gray-500">to</span>
@@ -242,6 +249,7 @@ function MyForm() {
             placeholder="Select date end"
             value={graduationEnd}
             onChange={(e) => setGraduationEnd(e.target.value)}
+            required
           />
         </div>
       </div>
@@ -255,6 +263,7 @@ function MyForm() {
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         value={projectName}
         onChange={(e) => setProjectName(e.target.value)}
+        required
       />
     </div>
     <div className="mb-5">
@@ -266,6 +275,7 @@ function MyForm() {
         placeholder="Write your project description here..."
         value={projectDescription}
         onChange={(e) => setProjectDescription(e.target.value)}
+        required
       />
     </div>
     <div className="mb-5">
@@ -277,6 +287,7 @@ function MyForm() {
         placeholder="https://github.com/username/repository"
         value={githubLink}
         onChange={(e) => setGithubLink(e.target.value)}
+        // required
       />
     </div>
     <div className="mb-5">
@@ -288,6 +299,7 @@ function MyForm() {
         placeholder="https://live-link.com"
         value={liveLink}
         onChange={(e) => setLiveLink(e.target.value)}
+        // required
       />
     </div>
     <div className="mb-5">
@@ -297,6 +309,7 @@ function MyForm() {
       id="file"
       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
       onChange={handleFileChange}
+      required
     />
     </div>
     <div className="mb-5">
@@ -306,6 +319,7 @@ function MyForm() {
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         checked={agreeTerms}
         onChange={(e) => setAgreeTerms(e.target.checked)}
+        required
       />
       <label htmlFor="agreeTerms" className="ml-2 text-sm font-medium text-gray-900 dark:text-white">I agree to the terms and conditions</label>
     </div>

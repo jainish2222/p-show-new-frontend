@@ -14,11 +14,11 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="min-h-screen text-white flex items-center justify-center px-4 sm:px-6 lg:px-8">
+    <div className="mt-20 text-white flex items-center justify-center px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl w-full space-y-8">
         <div className="text-center">
           <img className="mx-auto h-24 w-auto" src="/img/image.png" alt="Logo" />
-          <h1 className="mt-6 text-4xl font-extrabold text-gray-700 sm:text-5xl md:text-6xl">
+          <h1 className="text-4xl font-extrabold text-gray-700 sm:text-5xl md:text-6xl">
             Have a smooth meeting
           </h1>
           <h2 className="mt-2 text-3xl font-extrabold text-indigo-700 sm:text-4xl md:text-5xl">
@@ -33,7 +33,7 @@ const Home = () => {
           <input
             type="text"
             required
-            className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-purple-600 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+            className="appearance-none rounded-lg relative block  dark:text-blue-100 w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-purple-600 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
             placeholder="Enter your name"
             onChange={(e) => setFullName(e.target.value)}
           />
@@ -44,7 +44,7 @@ const Home = () => {
                 <input
                   type="text"
                   required
-                  className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500  text-purple-600 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  className="appearance-none rounded-lg relative block w-full px-3 py-2 border dark:text-blue-100 border-gray-300 placeholder-gray-500  text-purple-600 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Enter room ID to join a meeting"
                   value={roomID}
                   onChange={(e) => setRoomID(e.target.value)}

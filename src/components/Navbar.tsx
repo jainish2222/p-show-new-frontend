@@ -88,29 +88,6 @@ export const Navbar = () => {
             ))}
           </ul>
         </div>
-        {/* <div className="hidden mr-3 space-x-4 lg:flex nav__item">
-        <Link href="/login" className="px-6 py-2 text-white bg-indigo-600 rounded-md md:ml-5">
-             Login
-          </Link>
-          <>
-              {session.user?.email}
-              <li>
-                <button
-                  onClick={() => {
-                    signOut();
-                  }}
-                  className="p-2 px-5 -mt-1 bg-blue-800 rounded-full"
-                >
-                  Logout
-                </button>
-              </li>
-            </>
-          <Link href="/register" className="px-6 py-2 text-white bg-indigo-600 rounded-md md:ml-5">
-             Register
-          </Link>
-
-          <ThemeChanger />
-        </div> */}
         <div className="hidden mr-3 space-x-4 lg:flex nav__item">
         {!session ? (
             <>
