@@ -31,7 +31,7 @@ const App: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://share-server-pshow.onrender.com/fetch-form");
+        const response = await axios.get("https://pshow1.onrender.com/fetch-form");
         setFormData(response.data);
   
         // Directly map the sections without setTimeout
