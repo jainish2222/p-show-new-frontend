@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { SectionTitle } from "@/components/SectionTitle"; // Assuming this is a valid import
 
@@ -17,28 +17,20 @@ interface FormItem {
   email: string;
   branch: string;
   graduationStart: Date;
-  githubLink: string;
 }
 
 const App: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<string>("");
   const [formData, setFormData] = useState<FormItem[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const sectionsRef = useRef<(HTMLElement | null)[]>([]);
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
   // Fetch data on mount
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://share-server-pshow.onrender.com/fetch-form");
+        const response = await axios.get("http://localhost:5000/fetch-form");
         setFormData(response.data);
-  
-        // Directly map the sections without setTimeout
-        sectionsRef.current = response.data.map((item: FormItem) =>
-          document.getElementById(item.projectName.toLowerCase().replace(/ /g, "-"))
-        );
-  
       } catch (error) {
         console.error("Error fetching form data:", error);
         setError("Failed to load data.");
@@ -46,18 +38,9 @@ const App: React.FC = () => {
         setLoading(false);
       }
     };
-  
+
     fetchData();
   }, []);
-  
-
-  const handleScroll = (id: string, event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
-    event.preventDefault();
-    const section = sectionsRef.current.find((section) => section?.id === id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   const handleDownload = (githubLink: string) => {
     const repoPath = githubLink.replace("https://github.com/", "").replace(".git", "");
@@ -68,26 +51,19 @@ const App: React.FC = () => {
     link.click();
   };
 
-  const handleScrollEvent = () => {
-    const currentSection = sectionsRef.current.find((section) => {
-      if (section) {
-        const rect = section.getBoundingClientRect();
-        return rect.top >= 0 && rect.top < window.innerHeight / 2;
-      }
-      return false;
-    });
-
-    if (currentSection) {
-      setActiveSection(currentSection.id);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScrollEvent);
-    return () => {
-      window.removeEventListener("scroll", handleScrollEvent);
-    };
-  }, []);
+  // Filter form data based on search term
+  const filteredData = formData.filter(item => {
+    const searchLower = searchTerm.toLowerCase();
+    return (
+      item.projectName.toLowerCase().includes(searchLower) ||
+      item.projectDescription.toLowerCase().includes(searchLower) ||
+      item.name.toLowerCase().includes(searchLower) ||
+      item.surname.toLowerCase().includes(searchLower) ||
+      item.college.toLowerCase().includes(searchLower) ||
+      item.branch.toLowerCase().includes(searchLower)||
+      item.email.toLowerCase().includes(searchLower)
+    );
+  });
 
   if (loading) {
     return (
@@ -106,31 +82,41 @@ const App: React.FC = () => {
   return (
     <div className="flex flex-col lg:flex-row justify-center items-center">
       <main className="flex-grow">
-        <div className="flex ">
+        <div className="flex">
           {/* Sidebar for larger screens */}
-          <div className="lg:w-1/6  w-[7%]">
-            <ul className="hidden lg:flex fixed z-10 overflow-y-scroll flex-col justify-center list-none pl-6 sm:w-88">
-              {formData.map((item) => (
+          <div className="lg:w-1/6 w-[7%]">
+            <ul className="hidden lg:flex fixed z-10 flex-col justify-center list-none pl-6">
+              {filteredData.map((item) => (
                 <li
                   key={item._id}
-                  className={`my-3 font-medium text-xs uppercase cursor-pointer ${
-                    activeSection === item.projectName.toLowerCase().replace(/ /g, "-") ? "text-indigo-500" : ""
-                  }`}
-                  onClick={(event) => handleScroll(item.projectName.toLowerCase().replace(/ /g, "-"), event)}
+                  className="my-3 font-medium text-xs uppercase cursor-pointer hover:text-indigo-500 transition-colors"
                 >
-                  {item.projectName.length > 30 ? `${item.projectName.substring(0, 30)}...` : item.projectName}
+                  <a href={`#${item.projectName.toLowerCase().replace(/ /g, "-")}`}>
+                    {item.projectName.length > 30 ? `${item.projectName.substring(0, 30)}...` : item.projectName}
+                  </a>
                 </li>
               ))}
             </ul>
           </div>
 
           {/* Main content area */}
-          <div className="flex-grow flex flex-col justify-center items-center w-[100%] px-4 sm:px-1">
-            {formData.map((item) => (
-              <div
+          <div className="flex-grow flex flex-col justify-center items-center w-full px-4 sm:px-1">
+            {/* Search Input */}
+            <div className="w-full mb-4">
+            <input
+  type="text"
+  placeholder="Search projects..."
+  value={searchTerm}
+  onChange={(e) => setSearchTerm(e.target.value)}
+  className="w-80 max-w-xs border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300 mx-auto block"
+/>
+
+            </div>
+            {filteredData.map((item) => (
+              <section
                 key={item._id}
                 id={item.projectName.toLowerCase().replace(/ /g, "-")}
-                className="pt-8 sm:pt-12 lg:pt-18 lg:h-screen flex justify-center items-center pl-0 sm:pl-6"
+                className="pt-8 sm:pt-12 lg:pt-18 lg:h-screen flex justify-center items-center"
               >
                 <div className="project-wrapper w-full sm:w-11/12 flex flex-col sm:flex-row justify-center sm:items-center">
                   <div className="mt-5 sm:mt-0 sm:w-full sm:pr-8">
@@ -209,7 +195,7 @@ const App: React.FC = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </section>
             ))}
           </div>
         </div>

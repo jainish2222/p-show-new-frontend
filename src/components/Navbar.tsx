@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import React, { useState } from "react";
 import ThemeChanger from "./DarkSwitch";
 import Image from "next/image"
 import { Disclosure } from "@headlessui/react";
@@ -15,6 +16,7 @@ export const Navbar = () => {
     "Contact",
   ];
   const { data: session }: any = useSession();
+  const [showTooltip, setShowTooltip] = useState(false)
   return (
     <div className="w-full">
       <nav className="container relative flex flex-wrap items-center justify-between p-8 mx-auto lg:justify-between xl:px-0">
@@ -71,6 +73,53 @@ export const Navbar = () => {
                     ))}
                   </>
                 </Disclosure.Panel>
+                <Disclosure.Panel className="flex flex-wrap w-full my-5 lg:hidden">
+                  <>
+                  {!session ? (
+            <>
+              <Link href="/login" className="px-6 py-2 mr-2 text-white bg-indigo-600 rounded-md md:ml-5">
+                Login
+              </Link>
+              <Link href="/register" className="px-6 py-2 ml-2 mr-4 text-white bg-indigo-600 rounded-md md:ml-5">
+                Register
+              </Link>
+              <ThemeChanger />
+            </>
+          ) : (
+            <>
+   <div>
+      <p
+        className="text-indigo-600 text-lg mt-1 mr-4 animate-glow"
+        onMouseEnter={() => setShowTooltip(true)} // Show tooltip on hover
+        onMouseLeave={() => setShowTooltip(false)} // Hide tooltip when not hovering
+      >
+        <Link
+          className="block text-center hover:underline mt-2"
+          href="/api/v1/yourproject"
+        >
+          @{session.user?.email.split('@')[0]}
+        </Link>
+      </p>
+      {showTooltip && (
+        <div className="absolute bg-gray-700 text-white text-sm rounded p-2 mt-4">
+          See your Project and you can also delete it.
+        </div>
+      )}
+    </div>
+
+      <div className="flex space-x-4">
+        <button 
+          onClick={() => signOut()}
+          className="bg-indigo-800 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+        >
+          Logout
+        </button>
+        <ThemeChanger />
+      </div>
+    </>
+          )}
+                  </>
+                </Disclosure.Panel>
               </div>
             </>
           )}
@@ -88,6 +137,9 @@ export const Navbar = () => {
             ))}
           </ul>
         </div>
+
+
+        {/* ccccccccccccccccccccccccccccccccccccccc */}
         <div className="hidden mr-3 space-x-4 lg:flex nav__item">
         {!session ? (
             <>
@@ -101,9 +153,25 @@ export const Navbar = () => {
             </>
           ) : (
             <>
-      <p className="text-indigo-600 text-lg mt-1 mr-3 animate-glow">
-  @{session.user?.email.split('@')[0]}
-</p>
+   <div>
+      <p
+        className="text-indigo-600 text-lg mt-1 mr-3 animate-glow"
+        onMouseEnter={() => setShowTooltip(true)} // Show tooltip on hover
+        onMouseLeave={() => setShowTooltip(false)} // Hide tooltip when not hovering
+      >
+        <Link
+          className="block text-center hover:underline mt-2"
+          href="/api/v1/yourproject"
+        >
+          @{session.user?.email.split('@')[0]}
+        </Link>
+      </p>
+      {showTooltip && (
+        <div className="absolute bg-gray-700 text-white text-sm rounded p-2 mt-4">
+          See your Project and you can also delete it.
+        </div>
+      )}
+    </div>
 
       <div className="flex space-x-4">
         <button 

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { SectionTitle } from "@/components/SectionTitle";
 import axios from "axios";
 import { useSession } from "next-auth/react";
@@ -20,16 +20,31 @@ function MyForm() {
   const [githubLink, setGithubLink] = useState("");
   const [liveLink, setLiveLink] = useState("");
   const [file, setFile] = useState(null);
+  const [file2, setFile2] = useState(null);
   const [img, setImg] = useState("");
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [loading, setLoading] = useState(false); // Loading state
-
+  const [showGithubLink, setShowGithubLink] = useState(true); 
   const { data: session, status } = useSession();
+  useEffect(() => {
+    if (session) {
+      setEmail(session.user?.email || ""); // Safely set email
+    }
+  }, [session]); 
 
   const handleFileChange = (event) => {
     if (event.target.files.length > 0) {
       setFile(event.target.files[0]);
     }
+  };
+  const handleFileChange2 = (event) => {
+    if (event.target.files.length > 0) {
+      setFile2(event.target.files[0]);
+    }
+  };
+
+  const toggleInput = () => {
+    setShowGithubLink((prev) => !prev); // Toggle input visibility
   };
 
   const handleSubmit = async (event) => {
@@ -59,7 +74,7 @@ function MyForm() {
         setImg(imgUrl);
 
         // Submit form data to your backend
-        const res = await fetch("https://share-server-pshow.onrender.com/submit-form", {
+        const res = await fetch("http://localhost:5000/submit-form", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -158,18 +173,7 @@ function MyForm() {
         required
       />
     </div>
-    <div className="mb-5">
-      <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-      <input
-        type="email"
-        id="email"
-        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        placeholder="email id must be diffrent for each project"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
-      />
-    </div>
+
     <div className="mb-5">
       <label htmlFor="college" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select your college</label>
       <select
@@ -231,7 +235,7 @@ function MyForm() {
           <input
             id="datepicker-range-start"
             name="start"
-            type="month"
+            type="date"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Select date start"
             value={graduationStart}
@@ -244,7 +248,7 @@ function MyForm() {
           <input
             id="datepicker-range-end"
             name="end"
-            type="month"
+            type="date"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Select date end"
             value={graduationEnd}
@@ -278,17 +282,48 @@ function MyForm() {
         required
       />
     </div>
-    <div className="mb-5">
-      <label htmlFor="githubLink" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">GitHub Link</label>
-      <input
-        type="text"
-        id="githubLink"
-        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        placeholder="https://github.com/username/repository"
-        value={githubLink}
-        onChange={(e) => setGithubLink(e.target.value)}
-        // required
-      />
+    <div>
+      <div className="mb-5">
+        <label className="flex items-center mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          <input
+            type="checkbox"
+            checked={showGithubLink}
+            onChange={toggleInput}
+            className="mr-2"
+          />
+          {showGithubLink ? 'untick if you do not use github' : 'Upload Project File'}
+        </label>
+      </div>
+
+      {showGithubLink ? (
+        <div className="mb-5">
+          <label htmlFor="githubLink" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            GitHub Link
+          </label>
+          <input
+            type="text"
+            id="githubLink"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="https://github.com/username/repository"
+            value={githubLink}
+            onChange={(e) => setGithubLink(e.target.value)}
+            required={showGithubLink}
+          />
+        </div>
+      ) : (
+        <div className="mb-5">
+          <label htmlFor="file" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Upload your project file
+          </label>
+          <input
+            type="file"
+            id="file"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            onChange={handleFileChange2}
+            required={!showGithubLink} // Ensure one is required
+          />
+        </div>
+      )}
     </div>
     <div className="mb-5">
       <label htmlFor="liveLink" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Live Link</label>
@@ -303,7 +338,7 @@ function MyForm() {
       />
     </div>
     <div className="mb-5">
-      <label htmlFor="file" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Upload your file</label>
+      <label htmlFor="file" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Upload your project image</label>
       <input
       type="file"
       id="file"
@@ -312,6 +347,7 @@ function MyForm() {
       required
     />
     </div>
+
     <div className="mb-5">
       <input
         type="checkbox"

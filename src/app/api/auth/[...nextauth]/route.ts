@@ -1,9 +1,9 @@
 import NextAuth from "next-auth";
 import { Account, User as AuthUser } from "next-auth";
-import GithubProvider from "next-auth/providers/github";
-import DiscordProvider from "next-auth/providers/discord";
-import InstagramProvider from "next-auth/providers/instagram";
-import GoogleProvider from "next-auth/providers/google";
+// import GithubProvider from "next-auth/providers/github";
+// import DiscordProvider from "next-auth/providers/discord";
+// import InstagramProvider from "next-auth/providers/instagram";
+// import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 import bcrypt from "bcryptjs";
