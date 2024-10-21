@@ -74,7 +74,11 @@ function MyForm() {
         setImg(imgUrl);
 
         // Submit form data to your backend
+<<<<<<< HEAD
         const res = await fetch("http://localhost:5000/submit-form", {
+=======
+        const res = await fetch("https://pshow1.onrender.com/submit-form", {
+>>>>>>> aa3cc2550d7f9b1c75338df2e22da8e109f450b7
           method: "POST",
           headers: {
             "Content-Type": "application/json",
