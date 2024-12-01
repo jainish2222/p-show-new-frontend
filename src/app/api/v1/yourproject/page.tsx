@@ -33,7 +33,7 @@ const App: React.FC = () => {
     try {
       setLoading(true);
       if (email) {
-        const response = await axios.get<Project[]>(`http://localhost:5000/fetch-projects/${email}`);
+        const response = await axios.get<Project[]>(`https://p-show-backend-project.onrender.com/fetch-projects/${email}`);
         setProjects(response.data);
       }
     } catch (error) {
@@ -46,7 +46,7 @@ const App: React.FC = () => {
   // Step 3: Function to delete a project
  const handleDelete = async (id: string) => {
   try {
-    await axios.delete(`http://localhost:5000/delete-project/${id}`);
+    await axios.delete(`https://p-show-backend-project.onrender.com/delete-project/${id}`);
     // Update the state by filtering out the deleted project
     setProjects((prevProjects) => prevProjects.filter((project) => project.id !== id));
   } catch (error) {

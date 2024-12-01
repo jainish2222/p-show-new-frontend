@@ -47,7 +47,7 @@ function MyForm() {
   formData.append("file_name", projectName); // Add file name to formData
 
   try {
-     const response = await axios.post('http://localhost:5001/upload-folder', formData, {
+     const response = await axios.post('https://p-show-backend-file.onrender.com/upload-folder', formData, {
         headers: { "Content-Type": "multipart/form-data" },
      });
 
@@ -112,9 +112,9 @@ function MyForm() {
 
         // Submit form data to your backend
 
-        const res = await fetch("http://localhost:5000/submit-form", {
+        // const res = await fetch("http://localhost:5000/submit-form", {
 // =======
-//         const res = await fetch("https://pshow1.onrender.com/submit-form", {
+        const res = await fetch("https://p-show-backend-project.onrender.com/submit-form", {
 // >>>>>>> 
           method: "POST",
           headers: {

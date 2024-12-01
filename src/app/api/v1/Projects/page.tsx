@@ -29,7 +29,7 @@ const App: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/fetch-form");
+        const response = await axios.get("https://p-show-backend-project.onrender.com/fetch-form");
         setFormData(response.data);
       } catch (error) {
         console.error("Error fetching form data:", error);
