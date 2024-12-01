@@ -29,11 +29,7 @@ const App: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-<<<<<<< HEAD
         const response = await axios.get("http://localhost:5000/fetch-form");
-=======
-        const response = await axios.get("https://pshow1.onrender.com/fetch-form");
->>>>>>> aa3cc2550d7f9b1c75338df2e22da8e109f450b7
         setFormData(response.data);
       } catch (error) {
         console.error("Error fetching form data:", error);
@@ -46,14 +42,48 @@ const App: React.FC = () => {
     fetchData();
   }, []);
 
-  const handleDownload = (githubLink: string) => {
-    const repoPath = githubLink.replace("https://github.com/", "").replace(".git", "");
-    const downloadUrl = `https://github.com/${repoPath}/archive/refs/heads/main.zip`;
+//////////////
+const handleDownloadNongit = async (publicId: string) => {
+  try {
+    const response = await axios.get(
+      `http://localhost:5001/download/${publicId}`,
+      { responseType: "blob" }
+    );
+
+    // Create a blob URL and initiate download
+    const blob = new Blob([response.data]);
     const link = document.createElement("a");
-    link.href = downloadUrl;
-    link.download = downloadUrl;
+    link.href = URL.createObjectURL(blob);
+    link.download = `${publicId}.zip`; // File name for download
     link.click();
+    URL.revokeObjectURL(link.href); // Clean up blob URL
+  } catch (error) {
+    console.error("Error downloading the file:", error);
+    if (error.response && error.response.status === 404) {
+      alert("File not found. Please check the project name.");
+    } else {
+      alert("An error occurred while downloading the file.");
+    }
+  }
+};
+
+//////////////
+  
+
+  const handleDownload = async (githubLink: string, projectName: string) => {
+    if (githubLink) {
+      const repoPath = githubLink
+        .replace("https://github.com/", "")
+        .replace(".git", "");
+      const downloadUrl = `https://github.com/${repoPath}/archive/refs/heads/main.zip`;
+  
+      const link = document.createElement("a");
+      link.href = downloadUrl;
+      link.download = `${projectName}.zip`; // File name for the download
+      link.click(); // Triggers the download
+    }
   };
+  
 
   // Filter form data based on search term
   const filteredData = formData.filter(item => {
@@ -139,11 +169,16 @@ const App: React.FC = () => {
                       </a>
 
                       <button
-                        onClick={() => handleDownload(item.githubLink)}
-                        className="bg-indigo-600 text-white font-semibold text-sm sm:text-lg leading-none px-4 sm:px-6 py-2 rounded-md transition duration-300 hover:bg-gray-700"
-                      >
-                        Download
-                      </button>
+  onClick={() =>
+    item.githubLink
+      ? handleDownload(item.githubLink, item.projectName)
+      : handleDownloadNongit('folder/ulluullu')
+  }
+  className="bg-indigo-600 text-white font-semibold text-sm sm:text-lg leading-none px-4 sm:px-6 py-2 rounded-md transition duration-300 hover:bg-gray-700"
+>
+  Download
+</button>
+
 
                       <div className="relative group">
                         <button className="bg-indigo-400 text-white font-semibold text-sm sm:text-lg leading-none px-4 sm:px-6 py-2 rounded-md transition duration-300">

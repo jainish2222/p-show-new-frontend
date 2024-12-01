@@ -44,15 +44,17 @@ const App: React.FC = () => {
   };
 
   // Step 3: Function to delete a project
-  const handleDelete = async (id: string) => {
-    try {
-      await axios.delete(`http://localhost:5000/delete-project/${id}`);
-      fetchProjects(); // Refetch projects after deletion
-    } catch (error) {
-      console.error("Error deleting project:", error);
-      alert("An error occurred because no project is created by you.");
-    }
-  };
+ const handleDelete = async (id: string) => {
+  try {
+    await axios.delete(`http://localhost:5000/delete-project/${id}`);
+    // Update the state by filtering out the deleted project
+    setProjects((prevProjects) => prevProjects.filter((project) => project.id !== id));
+  } catch (error) {
+    console.error("Error deleting project:", error);
+    alert("An error occurred. Please try again.");
+  }
+};
+
 
   // Step 4: Fetch projects only when the session is authenticated
   useEffect(() => {

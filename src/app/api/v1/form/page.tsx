@@ -26,6 +26,43 @@ function MyForm() {
   const [loading, setLoading] = useState(false); // Loading state
   const [showGithubLink, setShowGithubLink] = useState(true); 
   const { data: session, status } = useSession();
+  const [selectedFiles, setSelectedFiles] = useState(null);
+  const [downloadLink, setDownloadLink] = useState("");
+  
+  ////////////////////////////////////////
+  const handleFileChange3 = (event) => {
+    setSelectedFiles(event.target.files);
+ };
+
+ const handleUpload = async () => {
+  if (!selectedFiles) {
+     alert("Please select a folder to upload.");
+     return;
+  }
+
+  const formData = new FormData();
+  for (let i = 0; i < selectedFiles.length; i++) {
+     formData.append("folder", selectedFiles[i]);
+  }
+  formData.append("file_name", projectName); // Add file name to formData
+
+  try {
+     const response = await axios.post('http://localhost:5001/upload-folder', formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+     });
+
+     if (response.data.downloadUrl) {
+        setDownloadLink(response.data.downloadUrl);
+     }
+
+     alert("Folder uploaded successfully!");
+  } catch (error) {
+     console.error("Upload error:", error);
+     alert("Error uploading folder.");
+  }
+};
+
+  //////////////////////////////////////////////
   useEffect(() => {
     if (session) {
       setEmail(session.user?.email || ""); // Safely set email
@@ -74,11 +111,11 @@ function MyForm() {
         setImg(imgUrl);
 
         // Submit form data to your backend
-<<<<<<< HEAD
+
         const res = await fetch("http://localhost:5000/submit-form", {
-=======
-        const res = await fetch("https://pshow1.onrender.com/submit-form", {
->>>>>>> aa3cc2550d7f9b1c75338df2e22da8e109f450b7
+// =======
+//         const res = await fetch("https://pshow1.onrender.com/submit-form", {
+// >>>>>>> 
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -315,18 +352,41 @@ function MyForm() {
           />
         </div>
       ) : (
-        <div className="mb-5">
-          <label htmlFor="file" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            Upload your project file
-          </label>
-          <input
-            type="file"
-            id="file"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            onChange={handleFileChange2}
-            required={!showGithubLink} // Ensure one is required
-          />
-        </div>
+<div className=" text-white p-6 rounded-lg  mt-6 font-sans">
+  <h2 className="text-indigo-500 text-lg font-bold mb-4">Folder Uploader</h2>
+  <div className="mb-4">
+    <label className="block text-sm font-medium mb-2">Select Folder:</label>
+    <input
+      type="file"
+      webkitdirectory="true"
+      directory="true"
+      onChange={handleFileChange3}
+      multiple
+      className="w-full px-4 py-2 rounded-md  text-white border focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+    />
+  </div>
+  <button
+    onClick={handleUpload}
+    className="bg-indigo-500 hover:bg-indigo-800 text-white font-medium py-2 px-4 rounded-md transition duration-300"
+  >
+    Upload
+  </button>
+  {downloadLink && (
+    <p className="mt-4 text-sm">
+      <strong>Download Link: </strong>
+      <a
+        href={downloadLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-400 underline hover:text-purple-500"
+      >
+        {`${downloadLink.slice(0, 30)}...`}
+      </a>
+    </p>
+  )}
+</div>
+
+      
       )}
     </div>
     <div className="mb-5">
