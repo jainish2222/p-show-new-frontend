@@ -5,13 +5,15 @@ import "./globals.css";
 import SessionProvider from "@/utils/SessionProvider";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { PopupWidget }  from "@/components/PopupWidget";
-import Head from 'next/head';
+import { PopupWidget } from "@/components/PopupWidget";
+import Script from "next/script";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Welcome to P-Show",
-  description: "P-show is a dynamic platform designed for students to showcase their innovative projects. It provides a space for sharing, discovering, and gaining recognition for academic and personal projects.",
+  description:
+    "P-show is a dynamic platform designed for students to showcase their innovative projects. It provides a space for sharing, discovering, and gaining recognition for academic and personal projects.",
 };
 
 export default function RootLayout({
@@ -19,24 +21,32 @@ export default function RootLayout({
   session,
 }: Readonly<{
   children: React.ReactNode;
-  session:any
+  session: any;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-       <Head>
+      <head>
+        {/* ✅ Google AdSense Meta Tag (Automation Verification) */}
+        <meta
+          name="google-adsense-account"
+          content="ca-pub-2604286882923471"
+        />
+
+        {/* Other scripts */}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/downloadjs/1.4.8/download.min.js"></script>
         <script src="/socket.io/socket.io.js"></script>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2604286882923471"
      crossorigin="anonymous"></script>
-      </Head>
+      </head>
+
       <body className={inter.className}>
-      <SessionProvider session={session}>
-        <ThemeProvider attribute="class">
-          <Navbar />
-          <div>{children}</div>
-          <Footer />
-          <PopupWidget />
-        </ThemeProvider>
+        <SessionProvider session={session}>
+          <ThemeProvider attribute="class">
+            <Navbar />
+            <div>{children}</div>
+            <Footer />
+            <PopupWidget />
+          </ThemeProvider>
         </SessionProvider>
       </body>
     </html>
