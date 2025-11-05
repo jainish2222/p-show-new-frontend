@@ -26,17 +26,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* ✅ Google AdSense Meta Tag (Automation Verification) */}
-        <meta
-          name="google-adsense-account"
-          content="ca-pub-2604286882923471"
-        />
-
-        {/* Other scripts */}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/downloadjs/1.4.8/download.min.js"></script>
         <script src="/socket.io/socket.io.js"></script>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2604286882923471"
-     crossorigin="anonymous"></script>
       </head>
 
       <body className={inter.className}>
