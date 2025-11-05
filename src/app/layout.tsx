@@ -6,7 +6,7 @@ import SessionProvider from "@/utils/SessionProvider";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PopupWidget } from "@/components/PopupWidget";
-import Script from "next/script";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,10 +25,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
+      <Head>
+        {/* ✅ Google AdSense Auto Ads script */}
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2604286882923471" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/downloadjs/1.4.8/download.min.js"></script>
         <script src="/socket.io/socket.io.js"></script>
-      </head>
+      </Head>
 
       <body className={inter.className}>
         <SessionProvider session={session}>
