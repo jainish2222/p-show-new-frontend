@@ -27,6 +27,13 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <Head>
         {/* ✅ Google AdSense Auto Ads script */}
+         <Script
+        id="adsense-script"
+        async
+        strategy="afterInteractive"
+        crossOrigin="anonymous"
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2604286882923471"
+      />
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2604286882923471" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/downloadjs/1.4.8/download.min.js"></script>
         <script src="/socket.io/socket.io.js"></script>
