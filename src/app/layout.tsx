@@ -6,7 +6,6 @@ import SessionProvider from "@/utils/SessionProvider";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PopupWidget } from "@/components/PopupWidget";
-import  AdSense  from "@/components/PopupWidget";
 import Head from "next/head";
 import Script from 'next/script';
 const inter = Inter({ subsets: ["latin"] });
@@ -27,7 +26,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <AdSense pId="pub-8407785867521702"/>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8407785867521702"
+     crossorigin="anonymous"></script>
       </head>
       <Head>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/downloadjs/1.4.8/download.min.js"></script>
